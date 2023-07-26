@@ -108,8 +108,7 @@ OverlaySupportEntry showSimpleNotification(
    */
   DismissDirection? slideDismissDirection,
 }) {
-  final dismissDirection = slideDismissDirection ??
-      (slideDismiss ? DismissDirection.horizontal : DismissDirection.none);
+  final dismissDirection = slideDismissDirection ?? (slideDismiss ? DismissDirection.horizontal : DismissDirection.none);
   final entry = showOverlayNotification(
     (context) {
       return SlideDismissible(
@@ -118,22 +117,17 @@ OverlaySupportEntry showSimpleNotification(
         child: Material(
           color: background ?? Theme.of(context).colorScheme.secondary,
           elevation: elevation,
-          child: SafeArea(
-              bottom: position == NotificationPosition.bottom,
-              top: position == NotificationPosition.top,
-              child: ListTileTheme(
-                textColor:
-                    foreground ?? Theme.of(context).colorScheme.onSecondary,
-                iconColor:
-                    foreground ?? Theme.of(context).colorScheme.onSecondary,
-                child: ListTile(
-                  leading: leading,
-                  title: content,
-                  subtitle: subtitle,
-                  trailing: trailing,
-                  contentPadding: contentPadding,
-                ),
-              )),
+          child: ListTileTheme(
+            textColor: foreground ?? Theme.of(context).colorScheme.onSecondary,
+            iconColor: foreground ?? Theme.of(context).colorScheme.onSecondary,
+            child: ListTile(
+              leading: leading,
+              title: content,
+              subtitle: subtitle,
+              trailing: trailing,
+              contentPadding: contentPadding,
+            ),
+          ),
         ),
       );
     },
