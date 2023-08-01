@@ -47,12 +47,13 @@ class BottomSlideNotification extends StatelessWidget {
 /// Can be dismiss by left or right slide.
 class SlideDismissible extends StatelessWidget {
   final Widget child;
-
+  final VoidCallback? onDismissed;
   final DismissDirection direction;
 
   SlideDismissible({
     Key? key,
     required this.child,
+    required this.onDismissed,
     @Deprecated('use directions instead.') bool enable = true,
     DismissDirection? direction,
   })  : direction = direction ??
@@ -66,6 +67,7 @@ class SlideDismissible extends StatelessWidget {
       direction: direction,
       onDismissed: (direction) {
         OverlaySupportEntry.of(context)!.dismiss(animate: false);
+        onDismissed?.call();
       },
       child: child,
     );

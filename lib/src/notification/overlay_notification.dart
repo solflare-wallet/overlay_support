@@ -107,11 +107,13 @@ OverlaySupportEntry showSimpleNotification(
    * The direction in which the notification can be dismissed.
    */
   DismissDirection? slideDismissDirection,
+  VoidCallback? onDismissed,
 }) {
   final dismissDirection = slideDismissDirection ?? (slideDismiss ? DismissDirection.horizontal : DismissDirection.none);
   final entry = showOverlayNotification(
     (context) {
       return SlideDismissible(
+        onDismissed: onDismissed,
         direction: dismissDirection,
         key: ValueKey(key),
         child: Material(
