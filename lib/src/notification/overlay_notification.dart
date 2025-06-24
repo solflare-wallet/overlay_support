@@ -75,6 +75,10 @@ OverlaySupportEntry showSimpleNotification(
    */
   EdgeInsetsGeometry? contentPadding,
   /**
+   * The minimum vertical padding for notification, default to 0.
+   */
+  double minVerticalPadding = 0,
+  /**
    * The background color for notification, default to [ColorScheme.secondary].
    */
   Color? background,
@@ -109,7 +113,8 @@ OverlaySupportEntry showSimpleNotification(
   DismissDirection? slideDismissDirection,
   VoidCallback? onDismissed,
 }) {
-  final dismissDirection = slideDismissDirection ?? (slideDismiss ? DismissDirection.horizontal : DismissDirection.none);
+  final dismissDirection = slideDismissDirection ??
+      (slideDismiss ? DismissDirection.horizontal : DismissDirection.none);
   final entry = showOverlayNotification(
     (context) {
       return SlideDismissible(
@@ -127,6 +132,7 @@ OverlaySupportEntry showSimpleNotification(
               title: content,
               subtitle: subtitle,
               trailing: trailing,
+              minVerticalPadding: minVerticalPadding,
               contentPadding: contentPadding,
             ),
           ),
